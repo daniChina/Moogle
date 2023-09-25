@@ -23,11 +23,10 @@ public static class Moogle
         GetItems(items, fileScore, queryNormalizedTf);
 
         // retorno el array de los documentos con su score
-		 var finalItems= new SearchItem[4];
+		 var finalItems= new SearchItem[3];
+         Resuls(items,finalItems);
 
-		// Results(finalItems);
-		
-        return new SearchResult(items, query);
+		        return new SearchResult(finalItems, query);
     }
 
     public static void GetItems(SearchItem[] items, Dictionary<string, float> scores, Dictionary<string, float> queryNormalized)
@@ -47,13 +46,14 @@ public static class Moogle
         return s;
 
     }
-	// public static void Results (SearchItem[]items){
-	// 	SearchItem[] finalItems = new SearchItem[4];
-	// 	int counter = 0; 
-	// 	for (int i =0;i<finalItems.Length;i++){
-	// 		finalItems[i]=items[i];
-	// 	}
-	// }
+    
+    public static void Resuls (SearchItem[]items,SearchItem[]finalItems){
+        for(int i =0; i <finalItems.Length;i++){
+            if (items[i].Snippet==" ") continue;
+            else {
+            finalItems[i]= new SearchItem(items[i].Title,items[i].Snippet,items[i].Score);
+        }}
+    }
 
 
     public static string ObtenerFragmentoDocumento(string documento, Dictionary<string, float> queryNormalizedTf)
@@ -77,9 +77,9 @@ public static class Moogle
             if (indicePalabra == -1) continue;
 
             // Construir el fragmento del documento que contiene al menos una palabra de la entrada
-            int inicioFragmento = Math.Max(0, indicePalabra - 5); // Incluir 5 palabras antes de la encontrada
+            int inicioFragmento = Math.Max(0, indicePalabra -1); // Incluir 1 palabras antes de la encontrada
             int finFragmento
-                = Math.Min(palabrasDocumento.Length - 1, indicePalabra + 30); // Incluir 30 palabras después de la encontrada
+                = Math.Min(palabrasDocumento.Length - 1, indicePalabra+30 ); // Incluir 30 palabras después de la encontrada
 
             string[] fragmentoArray = new string[finFragmento - inicioFragmento + 1];
             Array.Copy(palabrasDocumento, inicioFragmento, fragmentoArray, 0, fragmentoArray.Length);
