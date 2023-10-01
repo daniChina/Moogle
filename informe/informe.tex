@@ -21,7 +21,8 @@
     \label{fig:Moogle}
 \end{figure}
 \section{Introduccion}
-Este proyecto consiste en la realización de una aplicación cuyo propósito es realizar búsquedas de forma inteligente de un texto especifico en un conjunto de documentos.Para este proyecto se utiliza el lenguaje de programación C\#
+Este proyecto consiste en la realización de una aplicación cuyo propósito es realizar búsquedas de forma inteligente de un texto especifico en un conjunto de documentos.
+Es una aplicación web, desarrollada con tecnología .NET Core 6.0, específicamente usando Blazor como *framework* web para la interfaz gráfica, y en el lenguaje C\#.
 
 \section{Estructura del Proyecto}
 En la realización del proyecto se utilizo el Modelo de Recuperacion de Informacion Vectorial ,el cual se basa en el grado de similaridad de la consulta dada por el usuario con respecto a los documentos de la colección cuyos términos fueron ponderados mediante TF-IDF(Term Frequency – Inverse Document Frequency).\\ 
@@ -41,6 +42,7 @@ En el proyecto se definieron otras clases para mayor organizacion y legibilidad 
         \begin{equation}
             Tf = \frac{freq_{i,j}}{max_{l}freq_{ l,j}}
         \end{equation}
+         
         \item FillIdf :Este metodo calcula el idf de todas las palabras de los documentos y crea un diccionario con las palabras y su valor de idf \\Para calcular el idf utiliza la siguiente formula :
         \begin{equation}
             Idf=\log{\frac{N}{n_{i}}}
@@ -69,5 +71,5 @@ En el proyecto se definieron otras clases para mayor organizacion y legibilidad 
 \end {enumerate}
 
 \section{Resultados de la Busqueda}
-Despues de realizar todos los procesos antes descritos la aplicacion muestra como resultado de la busqueda del usuario , en el caso en que aparezca especificamente alguna palabra de la consulta , tres documentos donde se encuntra alguna de las palabras y un fragmento de los documentos .
+Despues de realizar todos los procesos antes descritos la aplicacion muestra como resultado de la busqueda del usuario , en el caso en que aparezca especificamente alguna palabra de la consulta , tres documentos donde se encuntra alguna de las palabras y un fragmento de los documentos donde aparezca al menos una palabra de la query .
 \end{document}
